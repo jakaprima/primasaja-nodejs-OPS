@@ -48,9 +48,8 @@
     "build:dev": "NODE_ENV=development webpack --config webpack.dev.js",
     "start:dev": "nodemon lib/index.js --exec babel-node",
     "testserver": "mocha --compilers js:babel-register",
-    "": "----------------------- production script ----------------------------------",
     "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
-    "start": "node dist/index.js",
+    "start": "node lib/index.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
