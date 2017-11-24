@@ -7,6 +7,7 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "cross-env": "^5.1.1",
+    "ejs": "^2.5.7",
     "express": "^4.13.4",
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
@@ -44,11 +45,6 @@
     "npm": "*"
   },
   "scripts": {
-    "build": "babel lib -d dist",
-    "build:dev": "NODE_ENV=development webpack --config webpack.dev.js",
-    "start:dev": "nodemon lib/index.js --exec babel-node",
-    "testserver": "mocha --compilers js:babel-register",
-    "build:prod": "NODE_ENV=production webpack --config webpack.prod.js",
     "start": "node lib/index.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
