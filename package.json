@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jakaprima/primasaja-nodejs-OPS.git"
+    "url": "http://github.com/openshift/nodejs-ex.git"
   },
   "author": "jaka prima maulana <jaka@primasaja.com> (http://www.primasaja.com)",
   "license": "ISC",
