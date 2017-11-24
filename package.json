@@ -1,8 +1,8 @@
 {
-  "name": "primasaja-nodejs-ops",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "nodejs-ex",
+  "version": "0.0.1",
+  "description": "Node.js sample app for OpenShift 3",
+  "main": "server.js",
   "dependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
@@ -12,6 +12,11 @@
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
     "object-assign": "4.1.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
   },
   "engine": {
     "node": "*",
@@ -19,16 +24,16 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
     "type": "git",
     "url": "http://github.com/openshift/nodejs-ex.git"
   },
-  "author": "jaka prima maulana <jaka@primasaja.com> (http://www.primasaja.com)",
-  "license": "ISC",
+  "author": "Steve Speicher <sspeiche@gmail.com>",
+  "license": "CC-BY-1.0",
   "bugs": {
-    "url": "https://github.com/jakaprima/primasaja-nodejs-OPS/issues"
+    "url": "http://github.com/openshift/nodejs-ex/issues"
   },
-  "homepage": "https://github.com/jakaprima/primasaja-nodejs-OPS#readme"
+  "homepage": "http://github.com/openshift/nodejs-ex"
 }
