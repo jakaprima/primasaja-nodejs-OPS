@@ -11,7 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // }
 
 module.exports = {
-    entry: './dev/client/index.jsx',
+    entry: './src/client/index.jsx',
     output: {
         filename: 'index_bundle.js',
         path: path.resolve(__dirname, 'dist')
@@ -20,7 +20,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                include: path.join(__dirname, '/dev'),
+                include: path.join(__dirname, '/src'),
                 exclude: '/node_modules',
                 loader: 'babel-loader',
                 query: {
