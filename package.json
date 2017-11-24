@@ -1,0 +1,29 @@
+{
+  "name": "primasaja-nodejs-ops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "cross-env": "^5.1.1",
+    "ejs": "^2.5.7",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.16",
+    "morgan": "^1.7.0",
+    "object-assign": "4.1.0",
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakaprima/primasaja-nodejs-OPS.git"
+  },
+  "author": "jaka prima maulana <jaka@primasaja.com> (http://www.primasaja.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakaprima/primasaja-nodejs-OPS/issues"
+  },
+  "homepage": "https://github.com/jakaprima/primasaja-nodejs-OPS#readme"
+}
