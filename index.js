@@ -106,7 +106,7 @@ var template = function(){
     </head>
     <body>
     <div id="MainReact">
-    jaka 1
+    jaka 2
     </div>
     </body>
     <script src="dist/index_bundle.js">
