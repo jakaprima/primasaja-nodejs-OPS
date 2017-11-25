@@ -1,26 +1,30 @@
-// import React from 'react';
-// import Express from 'express';
+'use strict';
+
+var _express = require('express');
+
+var _express2 = _interopRequireDefault(_express);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // import morgan from 'morgan';
 // import bodyParser from 'body-parser';
 // import path from 'path';
-var Express = require('express');
-var morgan = require('morgan');
+var morgan = require('morgan'); // import React from 'react';
+
 var bodyParser = require('body-parser');
 var path = require('path');
 
-
 //  OpenShift sample Node application
 
-let app = Express();
+var app = (0, _express2.default)();
 
-    
-Object.assign=require('object-assign')
+Object.assign = require('object-assign');
 
 // app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+app.use(morgan('combined'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
@@ -29,8 +33,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
       mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
       mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
-      mongoPassword = process.env[mongoServiceName + '_PASSWORD']
-      mongoUser = process.env[mongoServiceName + '_USER'];
+      mongoPassword = process.env[mongoServiceName + '_PASSWORD'];
+  mongoUser = process.env[mongoServiceName + '_USER'];
 
   if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
@@ -39,20 +43,19 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     }
     // Provide UI label that excludes user id and pw
     mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-    mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
-
+    mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
   }
 }
 var db = null,
     dbDetails = new Object();
 
-var initDb = function(callback) {
+var initDb = function initDb(callback) {
   if (mongoURL == null) return;
 
   var mongodb = require('mongodb');
   if (mongodb == null) return;
 
-  mongodb.connect(mongoURL, function(err, conn) {
+  mongodb.connect(mongoURL, function (err, conn) {
     if (err) {
       callback(err);
       return;
@@ -99,37 +102,26 @@ var initDb = function(callback) {
 //     res.send('{ pageCount: -1 }');
 //   }
 // });
-var template = function(){
-  return `
-    <html>
-    <head>
-    </head>
-    <body>
-    <div id="MainReact">
-    jaka 9
-    </div>
-    </body>
-    <script src="dist/index_bundle.js">
-    </html>
-  `
+var template = function template() {
+  return '\n    <html>\n    <head>\n    </head>\n    <body>\n    <div id="MainReact">\nnodejs dengan ES6 1\n    </div>\n    </body>\n    <script src="dist/index_bundle.js">\n    </html>\n  ';
 };
 
-app.get('*', (req, res) => {
+app.get('*', function (req, res) {
   // res.sendFile(path.resolve('./dist/index.html'));
   res.send(template());
 });
 
 // error handling
-app.use(function(err, req, res, next){
+app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something bad happened!');
 });
 
-initDb(function(err){
-  console.log('Error connecting to Mongo. Message:\n'+err);
+initDb(function (err) {
+  console.log('Error connecting to Mongo. Message:\n' + err);
 });
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
-module.exports = app ;
+module.exports = app;
