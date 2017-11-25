@@ -106,7 +106,7 @@ var template = function(){
     </head>
     <body>
     <div id="MainReact">
-nodejs dengan ES6 1
+nodejs belum pake es6
     </div>
     </body>
     <script src="dist/index_bundle.js">
