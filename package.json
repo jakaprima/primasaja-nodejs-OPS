@@ -17,7 +17,9 @@
     "mocha": "^2.4.5",
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
-    "object-assign": "4.1.0"
+    "object-assign": "4.1.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
   },
   "engine": {
     "node": "*",
@@ -25,7 +27,7 @@
   },
   "scripts": {
     "build": "babel lib -d dist",
-    "start": "build node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
