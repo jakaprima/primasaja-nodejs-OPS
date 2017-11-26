@@ -20,17 +20,9 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                include: path.join(__dirname, '/src'),
+                include: path.join(__dirname, '/src/client'),
                 exclude: '/node_modules',
-                loader: 'babel-loader',
-                query: {
-                    presets: ["react", "es2015"],
-                    plugins: [
-                        "transform-react-pug",
-                        "transform-react-jsx",
-                        "transform-object-rest-spread"
-                    ]
-                }
+                loader: "babel-loader"
             },
             {
                 test: /\.css$/,

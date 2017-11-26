@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MainComponent from './components/MainComponent.jsx';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-	<Provider>
-		<Router>
-			<Route path="/" component={MainComponent}/>
-		</Router>
-	</Provider>,
-	document.getElementById('MainReact')
-);
+// const Component1 = () => {
+// 	return (
+// 		<div>
+// 			component1
+// 		</div>
+// 	)
+// }
+
+// ReactDOM.render(
+// 	<Component1/>,
+// 	document.getElementById('MainReact')
+// )
