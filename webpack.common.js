@@ -33,6 +33,10 @@ module.exports = {
                 use: [
                     'file-loader'
                 ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=fonts/[name].[ext]'
             }
         ]
     },
@@ -43,7 +47,7 @@ module.exports = {
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default']
         }),
-        // new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist']),
     ],
     devtool: 'cheap-module-eval-source-map',
     watch: true
