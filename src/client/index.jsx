@@ -1,15 +1,15 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// const Component1 = () => {
-// 	return (
-// 		<div>
-// 			component1
-// 		</div>
-// 	)
-// }
+const Component1 = () => {
+	return (
+		<div>
+			component1
+		</div>
+	)
+}
 
-// ReactDOM.render(
-// 	<Component1/>,
-// 	document.getElementById('MainReact')
-// )
+ReactDOM.render(
+	<Component1/>,
+	document.getElementById('MainReact')
+)
