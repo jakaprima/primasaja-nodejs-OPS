@@ -3,6 +3,7 @@
   "plugins": [
 	  "transform-react-pug",
 	  "transform-react-jsx",
-	  "transform-object-rest-spread"
+	  "transform-object-rest-spread",
+	  "react-hot-loader/babel"
   ]
 }
