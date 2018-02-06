@@ -1,15 +1,24 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import { createStore } from 'redux';
+// import Counter from './components/Counter';
+// import counter from './reducers';
 
-// const Component1 = () => {
-// 	return (
-// 		<div>
-// 			component1
-// 		</div>
-// 	)
-// }
+// const store = createStore(counter)
+const rootEl = document.getElementById('root')
 
-// ReactDOM.render(
-// 	<Component1/>,
-// 	document.getElementById('MainReact')
-// )
+const RootComponent = () => (
+	<div>
+	ini adalah root component
+	</div>
+)
+
+
+
+const render = () => ReactDOM.render(
+<RootComponent/>,
+  rootEl
+)
+
+render()
+store.subscribe(render)
