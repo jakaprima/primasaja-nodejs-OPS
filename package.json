@@ -2,7 +2,7 @@
   "name": "nodejs-ex",
   "version": "0.0.1",
   "description": "Node.js sample app for OpenShift 3",
-  "main": "dist/server/index.js",
+  "main": "dist/index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -43,10 +43,10 @@
     "npm": "*"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node dist/server",
+    "start": "cross-env NODE_ENV=production node dist",
     "build": "npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack -p --display-error-details --config=config/webpack.config.prod.js",
-    "build:server": "babel src/server -d dist/server/",
+    "build:server": "babel src/server -d dist/",
     "start:dev": "npm run build && node dist/index.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
