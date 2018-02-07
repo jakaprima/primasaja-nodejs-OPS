@@ -29,4 +29,4 @@ module.exports = function setup(app) {
 
     }, 3000);
   });
-};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(servers, 'servers', 'src/server/middlewares/api.js');}();;
+};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(servers, 'servers', 'src/middlewares/api.js');}();;

@@ -10,4 +10,4 @@ module.exports = function setup(app) {
 
   // untuk handle semua User Interface
   app.get('*', function (req, res) {return res.sendFile(resolve(clientBuildPath, 'index.html'));});
-};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(clientBuildPath, 'clientBuildPath', 'src/server/middlewares/production.js');}();;
+};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(clientBuildPath, 'clientBuildPath', 'src/middlewares/production.js');}();;

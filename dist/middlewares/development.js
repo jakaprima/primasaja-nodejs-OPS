@@ -22,4 +22,4 @@ module.exports = function setup(app) {
 
   // all other requests be handled by UI itself
   app.get('*', function (req, res) {return res.sendFile(resolve(__dirname, '..', '..', '..', 'build-dev', 'client', 'index.html'));});
-};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(compiler, 'compiler', 'src/server/middlewares/development.js');}();;
+};;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(compiler, 'compiler', 'src/middlewares/development.js');}();;
