@@ -43,7 +43,7 @@
     "npm": "*"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node dist",
+    "start": "node dist/index.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack -p --display-error-details --config=config/webpack.config.prod.js",
     "build:server": "babel src -d dist && npm run build:serverdependencies",
