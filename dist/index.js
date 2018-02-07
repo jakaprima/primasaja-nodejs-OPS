@@ -168,8 +168,10 @@ app.use(_express2.default.static('dist'));
 //   res.send(template2());
 // });
 
-// handle semua request
 
+
+// handle semua request
+// HANDLE SEMUA
 // dijalankan setiap ada request apapun
 var handleRender = function handleRender(req, res) {
   // membuat baru redux store instance
@@ -205,8 +207,10 @@ var renderFullPage = function renderFullPage(html) {
 
 
 };
-
 app.use(handleRender);
+// HANDLE SEMUA
+
+
 // <script>
 //   window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
 // </script>
