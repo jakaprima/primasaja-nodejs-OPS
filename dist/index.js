@@ -5,10 +5,10 @@ var _server = require('react-dom/server');var _server2 = _interopRequireDefault(
 var _express = require('express');var _express2 = _interopRequireDefault(_express);
 var _morgan = require('morgan');var _morgan2 = _interopRequireDefault(_morgan);
 var _bodyParser = require('body-parser');var _bodyParser2 = _interopRequireDefault(_bodyParser);
-var _path = require('path');var _path2 = _interopRequireDefault(_path);
+var _path = require('path');var _path2 = _interopRequireDefault(_path);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-
-var _api = require('./middlewares/api');var _api2 = _interopRequireDefault(_api);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// import logger from './logger'
+// import setupApiRoutes from './middlewares/api';
 
 // import { StaticRouter } from 'react-router';
 
@@ -31,24 +31,22 @@ var _api = require('./middlewares/api');var _api2 = _interopRequireDefault(_api)
 // render()
 
 
-var setupAppRoutes =
-process.env.NODE_ENV === 'development' ? require('./middlewares/development') : require('./middlewares/production');
+// const setupAppRoutes =
+//   process.env.NODE_ENV === 'development' ? require('./middlewares/development') : require('./middlewares/production');
+
 
 // console.log()
-// import logger from './logger'
-var app = (0, _express2.default)();app.set('env', process.env.NODE_ENV);
+var app = (0, _express2.default)();
+app.set('env', process.env.NODE_ENV);
 // logger.info(`Application env: ${process.env.NODE_ENV}`);
 
 // app.use(logger.expressMiddleware);
 app.use(_bodyParser2.default.json());
 
-(0, _api2.default)(app);
-setupAppRoutes(app);
-
-// Object.assign=require('object-assign')
+Object.assign = require('object-assign');
 
 // // app.engine('html', require('ejs').renderFile);
-// app.use(morgan('combined'))
+app.use((0, _morgan2.default)('combined'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001,
 ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -97,6 +95,10 @@ var initDb = function initDb(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
+
+
+// setupApiRoutes(app);
+// setupAppRoutes(app);
 
 // // app.get('/', function (req, res) {
 // //   // try to initialize the db on every request if it's not already
@@ -169,72 +171,72 @@ app.use(_express2.default.static('dist'));
 // handle semua request
 
 // dijalankan setiap ada request apapun
-// const handleRender = (req, res) => {
-// membuat baru redux store instance
-// const store = createStore(reducersClient)
+var handleRender = function handleRender(req, res) {
+  // membuat baru redux store instance
+  // const store = createStore(reducersClient)
 
-// Render Component ke String
-// const html = ReactDOMServer.renderToString(
-//   <Provider store={store}>
-//     <RootComponent/>
-//   </Provider>
-// )
-// var html = 'testing'
+  // Render Component ke String
+  // const html = ReactDOMServer.renderToString(
+  //   <Provider store={store}>
+  //     <RootComponent/>
+  //   </Provider>
+  // )
+  var html = 'testing';
 
-// menangkap initial state dari redux store
-// const preloadedState = store.getState()
+  // menangkap initial state dari redux store
+  // const preloadedState = store.getState()
 
-// Mengirim rendered page ke client lagi
-// res.send(renderFullPage(html, preloadedState))
-// res.send(renderFullPage(html))
-// }
-// const renderFullPage = (html) => {
-//   return `
-//     <!doctype html>
-//     <html>
-//       <head>
-//         <title>Redux universal tutorial</title>
-//       </head>
-//       <body>
-//         <div id="root">${html}</div>
+  // Mengirim rendered page ke client lagi
+  // res.send(renderFullPage(html, preloadedState))
+  res.send(renderFullPage(html));
+};
+var renderFullPage = function renderFullPage(html) {
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <title>Redux universal tutorial</title>\n      </head>\n      <body>\n        <div id="root">' +
 
-//         <script src="/static/bundle.js"></script>
-//       </body>
-//     </html>
-//     `
-// }
 
-// app.use(handleRender);
+
+
+
+
+  html + '</div>\n        \n        <script src="/static/bundle.js"></script>\n      </body>\n    </html>\n    ';
+
+
+
+
+
+};
+
+app.use(handleRender);
 // <script>
 //   window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
 // </script>
 
 
 // app.get('*', (req, res) => {
-//   const context = {}
-//   const initialView = ReactDOMServer.renderToString(
-//     <StaticRouter
-//       location={req.url}
-//       context={context}
-//     >
-//       <RootComponent/>
-//     </StaticRouter>
-//   )
+//   // const context = {}
+//   // const initialView = ReactDOMServer.renderToString(
+//     // <StaticRouter
+//       // location={req.url}
+//       // context={context}
+//     // >
+//       // <RootComponent/>
+//     // </StaticRouter>
+//   // )
 //   // res.sendFile(path.resolve('./dist/index.html'));
 //   res.send(template(initialView));
 // });
 
 // error handling
-// app.use(function(err, req, res, next){
-//   console.error(err.stack);
-//   res.status(500).send('Something bad happened!');
-// });
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something bad happened!');
+});
 
-// initDb(function(err){
-//   console.log('Error connecting to Mongo. Message:\n'+err);
-// });
+initDb(function (err) {
+  console.log('Error connecting to Mongo. Message:\n' + err);
+});
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
-module.exports = app;;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(setupAppRoutes, 'setupAppRoutes', 'src/index.js');__REACT_HOT_LOADER__.register(app, 'app', 'src/index.js');__REACT_HOT_LOADER__.register(port, 'port', 'src/index.js');__REACT_HOT_LOADER__.register(ip, 'ip', 'src/index.js');__REACT_HOT_LOADER__.register(mongoURL, 'mongoURL', 'src/index.js');__REACT_HOT_LOADER__.register(mongoURLLabel, 'mongoURLLabel', 'src/index.js');__REACT_HOT_LOADER__.register(mongoServiceName, 'mongoServiceName', 'src/index.js');__REACT_HOT_LOADER__.register(mongoHost, 'mongoHost', 'src/index.js');__REACT_HOT_LOADER__.register(mongoPort, 'mongoPort', 'src/index.js');__REACT_HOT_LOADER__.register(mongoDatabase, 'mongoDatabase', 'src/index.js');__REACT_HOT_LOADER__.register(mongoPassword, 'mongoPassword', 'src/index.js');__REACT_HOT_LOADER__.register(db, 'db', 'src/index.js');__REACT_HOT_LOADER__.register(dbDetails, 'dbDetails', 'src/index.js');__REACT_HOT_LOADER__.register(initDb, 'initDb', 'src/index.js');}();;
+module.exports = app;;var _temp = function () {if (typeof __REACT_HOT_LOADER__ === 'undefined') {return;}__REACT_HOT_LOADER__.register(app, 'app', 'src/index.js');__REACT_HOT_LOADER__.register(port, 'port', 'src/index.js');__REACT_HOT_LOADER__.register(ip, 'ip', 'src/index.js');__REACT_HOT_LOADER__.register(mongoURL, 'mongoURL', 'src/index.js');__REACT_HOT_LOADER__.register(mongoURLLabel, 'mongoURLLabel', 'src/index.js');__REACT_HOT_LOADER__.register(mongoServiceName, 'mongoServiceName', 'src/index.js');__REACT_HOT_LOADER__.register(mongoHost, 'mongoHost', 'src/index.js');__REACT_HOT_LOADER__.register(mongoPort, 'mongoPort', 'src/index.js');__REACT_HOT_LOADER__.register(mongoDatabase, 'mongoDatabase', 'src/index.js');__REACT_HOT_LOADER__.register(mongoPassword, 'mongoPassword', 'src/index.js');__REACT_HOT_LOADER__.register(db, 'db', 'src/index.js');__REACT_HOT_LOADER__.register(dbDetails, 'dbDetails', 'src/index.js');__REACT_HOT_LOADER__.register(initDb, 'initDb', 'src/index.js');__REACT_HOT_LOADER__.register(handleRender, 'handleRender', 'src/index.js');__REACT_HOT_LOADER__.register(renderFullPage, 'renderFullPage', 'src/index.js');}();;
