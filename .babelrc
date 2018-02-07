@@ -1,18 +1,8 @@
 {
   "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ],
     "es2015", 
     "stage-2",
     "stage-0",
     "react"
   ],
-  "retainLines": true,
-  "plugins": [
-    "react-hot-loader/babel"
-  ]
 }
