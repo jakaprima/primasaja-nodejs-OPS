@@ -1,2 +1,0 @@
-webpackJsonp([0],[,,,function(e,t,n){e.exports=n(4)},function(e,t,n){"use strict";function u(e){return e&&e.__esModule?e:{default:e}}var r=n(1),o=u(r),l=n(7),c=u(l),a=document.getElementById("root"),d=function(){return o.default.createElement("div",null,"ini adalah root component")},i=function(){return c.default.render(o.default.createElement(d,null),a)};i(),store.subscribe(i)}],[3]);
-//# sourceMappingURL=main.js.map
