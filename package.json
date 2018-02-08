@@ -43,7 +43,8 @@
   },
   "scripts": {
     "start": "node dist/server.js",
-    "build": "npm run build:server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack -p --display-error-details --config=config/webpack.config.prod.js",
     "build:server": "babel src -d dist",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },

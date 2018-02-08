@@ -99,6 +99,8 @@ var initDb = function initDb(callback) {
 // --------------------------------------- HANDLING URLS
 // -------------------------- Request Handling
 var clientBuildPath = resolve(__dirname, 'client');
+
+app.use('/', _express2.default.static(clientBuildPath));
 app.get('*', function (req, res) {
   res.sendFile(resolve(clientBuildPath, 'index.html'));
 });
