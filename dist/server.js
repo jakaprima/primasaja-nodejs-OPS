@@ -1,9 +1,5 @@
 'use strict';
 
-var _http = require('http');
-
-var _http2 = _interopRequireDefault(_http);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,9 +34,8 @@ var _compression2 = _interopRequireDefault(_compression);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//  OpenShift sample Node application
-var resolve = _path2.default.resolve;
-
+var resolve = _path2.default.resolve; //  OpenShift sample Node application
+// import http from 'http';
 
 var app = (0, _express2.default)();
 

@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui';
 
 // import store from './store';
 import muiTheme from './muiTheme';
-// import Router from './router';
+import Cobain from './router';
 
 import {
   BrowserRouter as Router,
@@ -16,7 +16,7 @@ import {
 
 const Home = () => (
   <div>
-    halo aja
+    halo aja {console.log('halo')}
   </div>
 )
 
