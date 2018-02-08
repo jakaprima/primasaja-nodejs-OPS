@@ -98,7 +98,7 @@ var initDb = function initDb(callback) {
 
 // --------------------------------------- HANDLING URLS
 // -------------------------- Request Handling
-var clientBuildPath = resolve(__dirname, '..', 'client');
+var clientBuildPath = resolve(__dirname, 'client');
 app.get('*', function (req, res) {
   res.sendFile(resolve(clientBuildPath, 'index.html'));
 });
