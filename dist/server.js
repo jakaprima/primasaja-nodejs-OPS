@@ -1,14 +1,46 @@
 'use strict';
 
+var _http = require('http');
+
+var _http2 = _interopRequireDefault(_http);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _server = require('react-dom/server');
+
+var _server2 = _interopRequireDefault(_server);
+
+var _express = require('express');
+
+var _express2 = _interopRequireDefault(_express);
+
+var _morgan = require('morgan');
+
+var _morgan2 = _interopRequireDefault(_morgan);
+
+var _bodyParser = require('body-parser');
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //  OpenShift sample Node application
-var express = require('express'),
-    app = express(),
-    morgan = require('morgan');
+var app = (0, _express2.default)();
 
 Object.assign = require('object-assign');
 
 app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'));
+app.use((0, _morgan2.default)('combined'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
