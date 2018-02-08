@@ -32,14 +32,21 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _compression = require('compression');
+
+var _compression2 = _interopRequireDefault(_compression);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //  OpenShift sample Node application
+var resolve = _path2.default.resolve;
+
+
 var app = (0, _express2.default)();
 
 Object.assign = require('object-assign');
 
-app.engine('html', require('ejs').renderFile);
+// app.engine('html', require('ejs').renderFile);
 app.use((0, _morgan2.default)('combined'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
@@ -89,43 +96,14 @@ var initDb = function initDb(callback) {
   });
 };
 
-app.get('/', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function (err) {});
-  }
-  if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ ip: req.ip, date: Date.now() });
-    col.count(function (err, count) {
-      if (err) {
-        console.log('Error running count. Message:\n' + err);
-      }
-      res.render('index.html', { pageCountMessage: count, dbInfo: dbDetails });
-    });
-  } else {
-    res.render('index.html', { pageCountMessage: null });
-  }
+// --------------------------------------- HANDLING URLS
+// -------------------------- Request Handling
+var clientBuildPath = resolve(__dirname, '..', 'client');
+app.get('*', function (req, res) {
+  res.sendFile(resolve(clientBuildPath, 'index.html'));
 });
-
-app.get('/pagecount', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function (err) {});
-  }
-  if (db) {
-    db.collection('counts').count(function (err, count) {
-      res.send('{ pageCount: ' + count + '}');
-    });
-  } else {
-    res.send('{ pageCount: -1 }');
-  }
-});
-
-// error handling
+// -------------------------- Request Handling
+// -------------------------- ERROR Handling
 app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something bad happened!');
@@ -134,6 +112,8 @@ app.use(function (err, req, res, next) {
 initDb(function (err) {
   console.log('Error connecting to Mongo. Message:\n' + err);
 });
+// -------------------------- ERROR Handling
+// --------------------------------------- HANDLING URLS
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
