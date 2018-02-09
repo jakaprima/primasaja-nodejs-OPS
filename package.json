@@ -4,6 +4,8 @@
   "description": "Node.js sample app for OpenShift 3",
   "main": "dist/server.js",
   "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-pug": "^4.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "copyfiles": "^1.2.0",

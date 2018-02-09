@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {AppContainer} from 'react-hot-loader';
-import MuiThemeProvider from 'material-ui';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // import store from './store';
 import muiTheme from './muiTheme';
@@ -18,9 +18,9 @@ import {
 const render = (Route) => ReactDOM.render(
 	 <AppContainer>  
       <Router>
-        <div>
+        <MuiThemeProvider>
           <Route />
-        </div>
+        </MuiThemeProvider>
       </Router>
     </AppContainer>,
 	document.getElementById('root')
