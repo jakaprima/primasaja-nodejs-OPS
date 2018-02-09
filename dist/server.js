@@ -32,10 +32,29 @@ var _compression = require('compression');
 
 var _compression2 = _interopRequireDefault(_compression);
 
+var _webpack = require('webpack');
+
+var _webpack2 = _interopRequireDefault(_webpack);
+
+var _webpackDevMiddleware = require('webpack-dev-middleware');
+
+var _webpackDevMiddleware2 = _interopRequireDefault(_webpackDevMiddleware);
+
+var _webpackHotMiddleware = require('webpack-hot-middleware');
+
+var _webpackHotMiddleware2 = _interopRequireDefault(_webpackHotMiddleware);
+
+var _webpackConfig = require('../config/webpack.config.dev');
+
+var _webpackConfig2 = _interopRequireDefault(_webpackConfig);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var resolve = _path2.default.resolve; //  OpenShift sample Node application
 // import http from 'http';
+
+
+//package hanya untuk development
 
 var app = (0, _express2.default)();
 
@@ -93,12 +112,27 @@ var initDb = function initDb(callback) {
 
 // --------------------------------------- HANDLING URLS
 // -------------------------- Request Handling
-var clientBuildPath = resolve(__dirname, 'client');
+if (process.env.NODE_ENV == 'development') {
+  var compiler = (0, _webpack2.default)(_webpackConfig2.default);
+  app.use((0, _webpackDevMiddleware2.default)(compiler, {
+    publicPath: _webpackConfig2.default.output.publicPath,
+    stats: {
+      colors: true
+    }
+  }));
 
-app.use('/', _express2.default.static(clientBuildPath));
-app.get('*', function (req, res) {
-  res.sendFile(resolve(clientBuildPath, 'index.html'));
-});
+  app.use((0, _webpackHotMiddleware2.default)(compiler));
+  app.get('*', function (req, res) {
+    res.sendFile(resolve(__dirname, 'build-dev', 'client', 'index.html'));
+  });
+} else {
+  var folderBundleClient = resolve(__dirname, 'client');
+
+  app.use('/', _express2.default.static(folderBundleClient));
+  app.get('*', function (req, res) {
+    res.sendFile(resolve(folderBundleClient, 'index.html'));
+  });
+}
 // -------------------------- Request Handling
 // -------------------------- ERROR Handling
 app.use(function (err, req, res, next) {
