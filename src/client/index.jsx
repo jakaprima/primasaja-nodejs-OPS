@@ -6,46 +6,27 @@ import MuiThemeProvider from 'material-ui';
 
 // import store from './store';
 import muiTheme from './muiTheme';
-import Cobain from './router';
+import Route from './router';
 
 import {
   BrowserRouter as Router,
-  Route,
   Link
 } from 'react-router-dom'
 
-const Home = () => (
-  <div>
-    halo aja {console.log('halo')}
-  </div>
-)
-
-const About = () => (
-  <div>
-    About
-  </div>
-)
 
 
-const RootComponent = (AppRouter) => (
-	<AppContainer>  
-    <Router>
-      <div>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </div>
-    </Router>
-	</AppContainer>
-)
-
-
-
-const render = (AppRouter) => ReactDOM.render(
-	<RootComponent AppRouter={AppRouter}/>,
+const render = (Route) => ReactDOM.render(
+	 <AppContainer>  
+      <Router>
+        <div>
+          <Route />
+        </div>
+      </Router>
+    </AppContainer>,
 	document.getElementById('root')
 )
 
-render(Router)
+render(Route)
 store.subscribe(render)
 
 
