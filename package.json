@@ -53,9 +53,10 @@
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development node src/tmp/server.js",
     "start": "NODE_ENV=production node dist/server.js",
-    "build": "rimraf dist &&      npm run build:client && npm run build:server",
+    "build": "rimraf dist && npm run build:client && npm run build:server",
+    "prebuild": "rimraf dist && rimraf src/tmp",
     "build:client": "cross-env NODE_ENV=production webpack -p --display-error-details --config=config/webpack.config.prod.js",
-    "build:server": "copyfiles -a -u 1 src/server/**/**/* lib && babel lib/server -d dist --presets es2015,stage-2 && copyfiles -a -u 1 dist/server.js src/tmp/",
+    "build:server": "copyfiles -a -u 1 src/server/**/**/* lib && babel lib/server -d dist --presets es2015,stage-2 && copyfiles -a -u 1 dist/server.js src/tmp && copyfiles -a -u 1 dist/middlewares/**/**/* src/tmp",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
