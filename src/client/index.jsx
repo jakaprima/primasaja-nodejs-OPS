@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import promise from 'react-promise';
 import {Provider} from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reducers from './redux/reducers';
+
 import {AppContainer} from 'react-hot-loader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -14,21 +18,31 @@ import {
 } from 'react-router-dom'
 
 
+// const createStoreWithMiddleware = createStore(reducers, {}, compose(applyMiddleware(promise)));
+const createStoreWithMiddleware = createStore(reducers, {}, compose(applyMiddleware()));
 
-const render = (Route) => ReactDOM.render(
-	 <AppContainer>  
-      <Router>
-        <MuiThemeProvider>
-          <Route />
-        </MuiThemeProvider>
-      </Router>
-    </AppContainer>,
-	document.getElementById('root')
-)
+// const render = (Route) => 
 
-render(Route)
-store.subscribe(render)
+ReactDOM.render(
+  pug`
+  AppContainer
+    Provider(store=${createStoreWithMiddleware})
+      Router
+        MuiThemeProvider
+          Route
+  `
+,
+  document.getElementById('root')
+);
+// )
 
+// render(Route)
+
+if (module.hot) {
+  module.hot.accept('./router.jsx', () => {
+    render(require('./router').default);
+  });
+}
 
 // <AppContainer>
   // <Provider store={store}>
@@ -95,7 +109,3 @@ store.subscribe(render)
 //     render(require('./router').default);
 //   });
 // }
-
-
-
-

@@ -1,0 +1,168 @@
+/* for general */
+#error {
+	border: 1px solid red;
+}
+#error-text {
+	display: none;
+}
+
+.topbar {
+	display: none;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #B89968 !important;
+}
+.search-box {
+	display: none;
+}
+.modal-content {
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+p.login-text {
+	width: 160px;
+	margin: auto;
+	font-size: 11px;
+	color: #909090;
+}
+p.forgot-password {
+	font-size: 12px;
+	color: #909090;
+}
+.footer-text {
+	width: 190px;
+	margin: auto;
+	font-size: 12px;
+	color: #909090;
+}
+input.form-control, select.form-control { 
+	border-radius: 0;
+	font-size: 13px;
+}
+button.btn.btn-dark.btn-block {
+	border-radius: 0;
+}
+p.signup-text {
+	width: 180px;
+	margin: auto;
+	font-size: 11px;
+	color: #909090;
+}
+.form-group.reg-fullname, .form-group.reg-countries {
+	height: 30px;
+}
+input.form-control.reg-firstname, select.form-control.reg-homeland {
+	float: left;
+	width: 49%;
+	margin-right: 2%;
+}
+input.form-control.reg-lastname, select.form-control.reg-country {
+	float: left;
+	width: 49%;
+}
+span.custom-control-indicator {
+	border: 1px solid grey;
+	border-radius: 0 !important;
+	background-color: white;
+}
+span.custom-control-description {
+	font-size: 13px;
+	height: 18px;
+	margin-top: 3px;
+	color: #909090;
+}
+p.agreement {
+	font-size: 12px;
+	color: #909090;
+	text-align: center;
+}
+/* for tablet and smartphone */
+@media (max-width: 550px) {
+	.modal-dialog {
+		margin: 0 !important;
+	}
+}
+/* for tablet and smartphone */
+@media (max-width: 991px) { 
+	#navbarNav.navbar-collapse.collapse.show {
+		border-top: 1px solid #E8E8E8;
+	}
+	nav.navbar.navbar-expand-lg.navbar-light {
+		background-color: white;
+		border-bottom: 1px solid #E8E8E8;
+		padding: 0;
+	}
+	.navbar-light .navbar-toggler { 
+		border: 0;
+		outline: none;
+	}
+	.nav-item {
+		border-bottom: 1px solid #E8E8E8;
+		padding-left: 10px;
+	}
+	.mobile-logo {
+		background: url('../../../assets/logo/oprent-logo-gold.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		position: absolute;
+		top: 10px;
+		left: 39%;
+		width: 100px;
+		height: 25px;
+		
+	}
+}
+/* for desktop */
+@media (min-width: 992px) {
+	nav.navbar.navbar-expand-lg.navbar-light {
+		background-color: black;
+		padding: 0px;
+	}
+	.navbar-nav {
+		width: 620px;
+		margin: auto;
+		font-size: 0.75rem;
+	}
+	.search-box {
+		display: inline;
+		position: absolute;
+		right: 15%;
+		height: 100%;
+		width: 15px;
+	}
+	.search-box i.fa.fa-search {
+		margin-top: 9px;
+		color: #B89968;
+	}
+	.topbar {
+		background-color: white;
+		height: 45px;
+		display: block;
+	}
+	.logo {
+		background: url('../../../assets/logo/oprent-logo-gold.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 18px;
+		width: 100px;
+		right: 10px;
+		margin: auto;
+		margin-top: 12.5px;
+	}
+	.auth-box {
+		position: absolute;
+		top: 15px;
+		right: 15%;
+		width: 150px;
+	}
+	.sign-in, .sign-up {
+		width: 50%;
+		font-size: 0.75rem;
+		float: left;
+		text-align: right;
+		color: #B89968;
+	}
+	.register-mobile, .login-mobile {
+		display: none;
+	}
+}
